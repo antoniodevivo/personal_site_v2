@@ -1,0 +1,23 @@
+---
+import Layout from '@/layouts/BlogPost.astro';
+const tags = ['nest.js', 'django', 'nuxt.js', 'fastAPI', 'nx', 'monorepo', 'kubernetes', 'terraform'];
+const description = `
+  <p class="text-left">
+    Picture of <a
+      href="https://unsplash.com/es/@francescobiancoo?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
+      >Alpes (near Ortisei [Italy])</a
+    >
+  </p>
+`;
+---
+
+<Layout
+	tags={tags}
+	icon="mountains"
+	title="About Me"
+	description= {description}
+	pubDate={new Date('March 15 2025')}
+	heroImage="/src/assets/mountains.jpg"
+>
+	<h1>TODO</h1>
+</Layout>
