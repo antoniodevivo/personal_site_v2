@@ -1,0 +1,14 @@
+---
+interface Props {
+  fileName: string;
+  userName: string;
+  gistId: string;
+}
+
+const { fileName, userName, gistId } = Astro.props as Props;
+const gistUrl = fileName 
+  ? `https://gist.github.com/${userName}/${gistId}.js?file=${fileName}`
+  : `https://gist.github.com/${userName}/${gistId}.js`;
+---
+
+<script src={gistUrl}></script>
