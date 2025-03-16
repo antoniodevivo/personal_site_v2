@@ -2,7 +2,7 @@ name: Deploy Docker Compose
 
 on:
   push:
-    branches:
+    tags:
       - v* 
 
 jobs:
