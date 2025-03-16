@@ -1,4 +1,4 @@
-name: Deploy Docker Compose
+name: Deploy on VPS
 
 on:
   push:
@@ -24,10 +24,20 @@ jobs:
     - name: Deploy to VPS
       run: |
         ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} << 'EOF'
-          cd /var/www/docker/build/personal_site_v2
-          git pull origin main
-          docker buid -t personal_site_v2:latest .
-          cd ..
-          docker-compose down
-          docker-compose up -d
+          set -e  # Interrompe lo script in caso di errore
+          echo "Navigating to project directory..."
+          cd /var/www/docker/build/personal_site_v2 || { echo "Failed to navigate to project directory"; exit 1; }
+          
+          echo "Pulling latest changes from Git..."
+          git pull origin main || { echo "Git pull failed"; exit 1; }
+          
+          echo "Building Docker image..."
+          docker build -t personal_site_v2:latest . || { echo "Docker build failed"; exit 1; }
+          
+          echo "Restarting Docker Compose services..."
+          cd .. || { echo "Failed to navigate to parent directory"; exit 1; }
+          docker-compose down || { echo "Docker Compose down failed"; exit 1; }
+          docker-compose up -d || { echo "Docker Compose up failed"; exit 1; }
+          
+          echo "Deployment completed successfully!"
         EOF
