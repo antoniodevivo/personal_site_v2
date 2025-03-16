@@ -1,0 +1,33 @@
+name: Deploy Docker Compose
+
+on:
+  push:
+    branches:
+      - v* 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout del codice
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Configurazione SSH per connettersi al VPS
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.5.3
+      with:
+        ssh-private-key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
+
+    # Deploy sul VPS
+    - name: Deploy to VPS
+      run: |
+        ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USERNAME }}@${{ secrets.VPS_IP }} << 'EOF'
+          cd /var/www/docker/build/personal_site_v2
+          git pull origin main
+          docker buid -t personal_site_v2:latest .
+          cd ..
+          docker-compose down
+          docker-compose up -d
+        EOF

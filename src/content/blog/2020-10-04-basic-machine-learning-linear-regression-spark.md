@@ -327,15 +327,21 @@ Thank you for reading 🙂
 <tbody>
 <tr>
 <th markdown="span">MSE</th>
-<td markdown="span">[https://en.wikipedia.org/wiki/Mean_squared_error](https://en.wikipedia.org/wiki/Mean_squared_error)</td>
+    <td markdown="span">
+        <a href="https://en.wikipedia.org/wiki/Mean_squared_error" target="_blank">Link</a>
+    </td>
 </tr>
 <tr>
 <th markdown="span">RMSE</th>
-<td markdown="span">[https://en.wikipedia.org/wiki/Root-mean-square_deviation](https://en.wikipedia.org/wiki/Root-mean-square_deviation)</td>
+    <td markdown="span">
+        <a href="https://en.wikipedia.org/wiki/Root-mean-square_deviation" target="_blank">Link</a>
+    </td>
 </tr>
 <tr>
 <th markdown="span">R2 Score</th>
-<td markdown="span"><a href="https://en.wikipedia.org/wiki/Coefficient_of_determination" target="_blank">Link</a></td>
+    <td markdown="span">
+        <a href="https://en.wikipedia.org/wiki/Coefficient_of_determination" target="_blank">Link</a>
+    </td>
 </tr>
 </tbody>
 </table>

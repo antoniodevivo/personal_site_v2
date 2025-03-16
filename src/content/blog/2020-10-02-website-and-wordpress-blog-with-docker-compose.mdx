@@ -6,7 +6,8 @@ pubDate: 'Oct 02 2020'
 heroImage: "/src/assets/blog-2.png"
 ---
 import Gist from "../../components/Gist.astro";
-
+import { Image } from 'astro:assets';
+import flowDiagram from '../../assets/flow-blog-2.png';
 
 
 If you are creating your own personal website, take a look to this post 😉
@@ -16,7 +17,7 @@ We’ll see together how to create a **secure website** and serve a **wordpress*
 ## 1. The concept
 Let’s take a look to the concept behind this method.
 
-![project-flow](/src/assets/flow-blog-2.png)
+<Image src={flowDiagram} alt="project-flow" />
 
 We’ll use a Nginx server for redirect all api calls where we want.
 
